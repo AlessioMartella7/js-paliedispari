@@ -53,3 +53,11 @@ Dichiariamo chi ha vinto.
 5 - Creo una funzione per stabilire se la somma è pari o dispari
 6 - Stampo il risultato in pagina
 */
+
+// 1 - Chiedo all'utente di scegliere tra pari e dispari
+
+const userChoice = prompt('Pari o Dispari?').trim();
+
+// 2 - Chiedo di inserire un numero compreso tra 1 e 5
+
+const userNumber = parseInt(prompt('Scegli un numero tra 1 e 5'));
