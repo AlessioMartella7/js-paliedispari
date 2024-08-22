@@ -36,6 +36,9 @@ resultElement.innerText = resultMessage;
 
  */
 
+
+//------------------------------------------------------------------------------------------
+
 /*  Esercizio Pari e Dispari
 1 - recupero dal DOM gli elementi che mi servono
 2 - Chiedo all'utente di scegliere tra pari e dispari
@@ -47,7 +50,7 @@ resultElement.innerText = resultMessage;
 8 - Stampo il risultato in pagina
 */
 
-// 1 - recuper dal DOM gli elementi che mi servono
+// 1 - recupero dal DOM gli elementi che mi servono
 const resultElement = document.getElementById('result');
 const userElement = document.getElementById('user');
 const cpuElement = document.getElementById('cpu');
@@ -55,18 +58,30 @@ const sumElement = document.getElementById('sum');
 
 // 2 - Chiedo all'utente di scegliere tra pari e dispari
 
-const userChoice = prompt('Pari o Dispari?', 'dispari').trim();
+const userChoice = prompt('Pari o Dispari?', 'Dispari').toLowerCase().trim();
 
 // 3 - Chiedo di inserire un numero compreso tra 1 e 5
 
 const userNumber = parseInt(prompt('Scegli un numero tra 1 e 5'));
 
+//VALIDAZIONE
+//impostiamo i FLAG
+let min = 1;
+let max = 5;
+const isChoiceValid = userChoice !== 'pari' && userChoice !== 'dispari';
+const isNumberValid = isNaN(userNumber) || userNumber > max || userNumber < min ;
+
+if (isNumberValid || isChoiceValid) {
+    const errorMessage = isChoiceValid ? 'La scelta non è valida' : 'Il Numero inserito non è valido' ;
+    alert(errorMessage);
+} else {
+
 // 4 - Creo una funzione per generare un numero random per il computer compreso tra 1 e 5
-function getRandomNumber(min = 1, max = 5) {
+function getRandomNumber(min, max) {
 return Math.floor(Math.random() * max) + min ;
 }
 
-const cpuNumber = getRandomNumber();
+const cpuNumber = getRandomNumber(min,max);
 console.log('cpuNumber',cpuNumber);
 
 // 5 - Sommo i due numeri ottenuti
@@ -97,3 +112,5 @@ userElement.innerText = `Il numero scelto dal giocatore è : ${userNumber}`;
 cpuElement.innerText = `Il numero realizzato dal computer è : ${cpuNumber}`;
 sumElement.innerText = `La somma dei due numeri è : ${resultNumber}`;
 resultElement.innerText = resultMessage;
+
+}
