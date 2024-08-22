@@ -51,6 +51,7 @@ Dichiariamo chi ha vinto.
 3 - Creo una funzione per generare un numero random per il computer compreso tra 1 e 5
 4 - Sommo i due numeri ottenuti
 5 - Creo una funzione per stabilire se la somma è pari o dispari
+6 - Creo un messaggio da stampare in pagina
 6 - Stampo il risultato in pagina
 */
 
@@ -75,3 +76,14 @@ console.log('cpuNumber',cpuNumber);
 resultNumber = userNumber + cpuNumber;
 console.log( 'resultNumber',resultNumber);
 
+//5 - Creo una funzione per stabilire se la somma è pari o dispari
+
+function isEven(number) {
+    if(number % 2 === 0) {
+    return true;       
+    } else {
+    return false;
+}
+}
+const evaluate =  isEven(resultNumber);
+console.log('evaluate', evaluate)
