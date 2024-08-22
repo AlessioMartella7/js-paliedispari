@@ -16,28 +16,37 @@ Consigli del giorno
 2. Scriviamo sempre solo un pezzetto di codice alla volta, se funziona allora andiamo avanti. */
 
 /* Esercizio Palindroma
-1- recuperare gli elementi dal DOM
-2- preparo una costante dove ricevere la parola inserita dall'utente
-3- creo una funzione per invertire l'ordine della parola
-4- confronto la parola invertita con quella originale
-5- rimando il risultato in pagina
+1 - recuperare gli elementi dal DOM
+2 - preparo una costante dove ricevere la parola inserita dall'utente
+3 - preparo un messaggio base da rimandare in pagina
+4 - creo una funzione per invertire l'ordine della parola e controllare che sia palindroma
+5 - invoco la funzione
+6 - stampo in pagina
 */
 
-//recuperare gli elementi dal DOM
 
-const wordField = document.getElementById('word');
+// 1- recuperare gli elementi dal DOM
 const resultElement = document.getElementById('result');
 
-//preparo una costante dove ricevere la parola inserita dall'utente
-const word = wordField.value ;
+// 2- preparo una costante dove ricevere la parola inserita dall'utente
+const inputText = prompt('inserisci una parola').trim();
 
-//creo una funzione per invertire l'ordine della parola
+// 3 preparo un messaggio base da rimandare in pagina
+let resultMessage = 'La parola inserita non è palindroma';
 
-function reverseText(text) {
-  
-return text.split('').reverse().join('');
-   
+// 4 -creo una funzione per invertire l'ordine della parola e controllare che sia palindroma
+function isPalindrome(text) {
+  let isReverse = false; 
+const reversedText = text.split('').reverse().join('');
+    if(text === reversedText) { 
+        isReverse = true;
+        resultMessage = "la parola inserita è palindroma";
+    }
+   return isReverse;
 }
 
-const reversedWord = reverseText(word);
-console.log(reversedWord);
+// 5 - invoco la funzione 
+const resultText = isPalindrome(inputText);
+
+// 6 - stampo in pagina
+resultElement.innerText = resultMessage;
