@@ -35,35 +35,33 @@ const resultText = isPalindrome(inputText);
 resultElement.innerText = resultMessage;
 
  */
-/*
-Pari e Dispari
-L’utente sceglie pari o dispari e inserisce un numero da 1 a 5.
-Generiamo un numero random(sempre da 1 a 5) per il computer(usando una funzione).
-Sommiamo i due numeri
-Stabiliamo se la somma dei due numeri è pari o dispari(usando una funzione)
-Dichiariamo chi ha vinto.
-
-*/
 
 /*  Esercizio Pari e Dispari
-1 - Chiedo all'utente di scegliere tra pari e dispari
-2 - Chiedo di inserire un numero compreso tra 1 e 5
-3 - Creo una funzione per generare un numero random per il computer compreso tra 1 e 5
-4 - Sommo i due numeri ottenuti
-5 - Creo una funzione per stabilire se la somma è pari o dispari
-6 - Creo un messaggio da stampare in pagina
-6 - Stampo il risultato in pagina
+1 - recupero dal DOM gli elementi che mi servono
+2 - Chiedo all'utente di scegliere tra pari e dispari
+3 - Chiedo di inserire un numero compreso tra 1 e 5
+4 - Creo una funzione per generare un numero random per il computer compreso tra 1 e 5
+5 - Sommo i due numeri ottenuti
+6 - Creo una funzione per stabilire se la somma è pari o dispari
+7 - Creo un messaggio da stampare in pagina
+8 - Stampo il risultato in pagina
 */
 
-// 1 - Chiedo all'utente di scegliere tra pari e dispari
+// 1 - recuper dal DOM gli elementi che mi servono
+const resultElement = document.getElementById('result');
+const userElement = document.getElementById('user');
+const cpuElement = document.getElementById('cpu');
+const sumElement = document.getElementById('sum');
+
+// 2 - Chiedo all'utente di scegliere tra pari e dispari
 
 const userChoice = prompt('Pari o Dispari?', 'dispari').trim();
 
-// 2 - Chiedo di inserire un numero compreso tra 1 e 5
+// 3 - Chiedo di inserire un numero compreso tra 1 e 5
 
-const userNumber = parseInt(prompt('Scegli un numero tra 1 e 5', 4));
+const userNumber = parseInt(prompt('Scegli un numero tra 1 e 5'));
 
-// 3 - Creo una funzione per generare un numero random per il computer compreso tra 1 e 5
+// 4 - Creo una funzione per generare un numero random per il computer compreso tra 1 e 5
 function getRandomNumber(min = 1, max = 5) {
 return Math.floor(Math.random() * max) + min ;
 }
@@ -71,12 +69,12 @@ return Math.floor(Math.random() * max) + min ;
 const cpuNumber = getRandomNumber();
 console.log('cpuNumber',cpuNumber);
 
-//4 - Sommo i due numeri ottenuti
+// 5 - Sommo i due numeri ottenuti
 
-resultNumber = userNumber + cpuNumber;
+const resultNumber = userNumber + cpuNumber;
 console.log( 'resultNumber',resultNumber);
 
-//5 - Creo una funzione per stabilire se la somma è pari o dispari
+// 6 - Creo una funzione per stabilire se la somma è pari o dispari
 
 function isEven(number) {
     if(number % 2 === 0) {
@@ -87,3 +85,15 @@ function isEven(number) {
 }
 const evaluate =  isEven(resultNumber);
 console.log('evaluate', evaluate)
+
+// 7 - Creo un messaggio da stampare in pagina
+let resultMessage ='Vincono i Pari!';
+if(evaluate === false) {
+    resultMessage = 'Vincono i Dispari!';
+}
+
+// 8 - Stampo il risultato in pagina
+userElement.innerText = `Il numero scelto dal giocatore è : ${userNumber}`;
+cpuElement.innerText = `Il numero realizzato dal computer è : ${cpuNumber}`;
+sumElement.innerText = `La somma dei due numeri è : ${resultNumber}`;
+resultElement.innerText = resultMessage;
