@@ -18,10 +18,9 @@ Consigli del giorno
 /* Esercizio Palindroma
 1- recuperare gli elementi dal DOM
 2- preparo una costante dove ricevere la parola inserita dall'utente
-3- creo una funzione per analizzare la parola
-4- inverto l'ordine della parola
-5- confronto la parola invertita con quella originale
-6- rimando il risultato in pagina
+3- creo una funzione per invertire l'ordine della parola
+4- confronto la parola invertita con quella originale
+5- rimando il risultato in pagina
 */
 
 //recuperare gli elementi dal DOM
@@ -32,4 +31,13 @@ const resultElement = document.getElementById('result');
 //preparo una costante dove ricevere la parola inserita dall'utente
 const word = wordField.value ;
 
+//creo una funzione per invertire l'ordine della parola
 
+function reverseText(text) {
+  
+return text.split('').reverse().join('');
+   
+}
+
+const reversedWord = reverseText(word);
+console.log(reversedWord);
