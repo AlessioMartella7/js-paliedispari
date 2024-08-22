@@ -61,3 +61,11 @@ const userChoice = prompt('Pari o Dispari?').trim();
 // 2 - Chiedo di inserire un numero compreso tra 1 e 5
 
 const userNumber = parseInt(prompt('Scegli un numero tra 1 e 5'));
+
+// 3 - Creo una funzione per generare un numero random per il computer compreso tra 1 e 5
+function getRandomNumber(min = 1, max = 5) {
+return Math.floor(Math.random() * max) + min ;
+}
+
+const cpuNumber = getRandomNumber();
+console.log(cpuNumber);
